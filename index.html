@@ -1,16 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Content</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Content Viewer</title>
     <style>
-        iframe {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000;
+        }
+        
+        .iframe-container {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 100vh;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             border: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* For better mobile handling */
+        @media (max-width: 768px) {
+            iframe {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        
+        /* Fallback for older browsers */
+        @supports (height: 100dvh) {
+            .iframe-container {
+                height: 100dvh;
+            }
         }
     </style>
 </head>
 <body>
-    <iframe src="https://label-caster.ffm.to/tsh4j2ttpj"></iframe>
+    <div class="iframe-container">
+        <iframe src="https://label-caster.ffm.to/tsh4j2ttpj" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+    </div>
 </body>
 </html>
